@@ -1,68 +1,87 @@
-
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
-# Estilos coquette: pastel, elegante y dulce
+# Estilos personalizados
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+    html, body, [class*="css"]  {
+        font-family: 'Raleway', sans-serif;
+    }
 
     .main-title {
-        font-family: 'Quicksand', sans-serif;
-        font-size: 42px;
-        color: #AF7AC5;
+        font-size: 48px;
+        color: #9B59B6;
         text-align: center;
-        margin-top: 10px;
         margin-bottom: 20px;
+        animation: fadeIn 2s ease-in-out;
     }
 
     .sidebar .stSelectbox label,
     .sidebar .stSlider label,
     .sidebar .stColorPicker label {
-        font-family: 'Quicksand', sans-serif;
-        color: #7D5A8C;
-        font-size: 17px;
-    }
-
-    .sidebar .stSelectbox,
-    .sidebar .stSlider,
-    .sidebar .stColorPicker {
-        background-color: #FDEEF4;
-        border-radius: 10px;
-        padding: 8px;
+        font-size: 16px;
+        color: #6C3483;
     }
 
     .sidebar {
-        background-color: #FFF5FB;
+        background-color: #F8F0FB;
+        border-radius: 10px;
+        padding: 20px 10px;
     }
 
+    .stSlider, .stSelectbox, .stColorPicker {
+        background-color: #F4ECF7;
+        border-radius: 8px;
+        padding: 5px 10px;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .canvas-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: #FDF7FF;
+        border-radius: 20px;
+        animation: fadeIn 1.5s ease-in;
+        box-shadow: 0 0 15px #e3d4f0;
+    }
     </style>
-    <div class="main-title">🎀 Tablero de Dibujo</div>
+
+    <div class="main-title">🎨✨ Tablero Mágico Morado ✨🎨</div>
     """,
     unsafe_allow_html=True
 )
 
 # Configuración del tablero en la barra lateral
 with st.sidebar:
-    st.markdown("### 🧁 Personaliza tu dibujo")
+    st.markdown("### 💜 Personaliza tu experiencia")
     drawing_mode = st.selectbox(
-        "Herramienta de dibujo",
-        ("freedraw", "line", "rect", "circle", "transform", "polygon", "point"),
+        "Herramienta de dibujo:",
+        ("freedraw", "line", "rect", "circle", "transform", "polygon", "point")
     )
-    stroke_width = st.slider('Ancho del trazo', 1, 30, 10)
-    stroke_color = st.color_picker("Color del trazo", "#D291BC")
-    bg_color = "#FFF5FB"  # rosado pastel claro
+    stroke_width = st.slider("Ancho del trazo", 1, 30, 10)
+    stroke_color = st.color_picker("Color del trazo", "#A569BD")
+    bg_color = "#FDF7FF"  # fondo suave y morado pastel
 
-# Lienzo principal con tonos suaves
+# Lienzo con espacio extra y configuración ideal
+st.markdown('<div class="canvas-container">', unsafe_allow_html=True)
+
 canvas_result = st_canvas(
-    fill_color="rgba(242, 201, 251, 0.2)",  # relleno suave y adorable
+    fill_color="rgba(169,105,189,0.2)",  # morado pastel translúcido
     stroke_width=stroke_width,
     stroke_color=stroke_color,
     background_color=bg_color,
-    height=400,
-    width=500,
+    height=700,
+    width=1000,
     drawing_mode=drawing_mode,
-    key="canvas",
+    key="canvas"
 )
 
+st.markdown('</div>', unsafe_allow_html=True)
