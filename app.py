@@ -54,7 +54,7 @@ st.markdown(
     }
     </style>
 
-    <div class="main-title">🎨✨ Tablero Mágico interactivo ✨🎨</div>
+    <div class="main-title">🎨Tablero Mágico interactivo🎨 </div>
     """,
     unsafe_allow_html=True
 )
