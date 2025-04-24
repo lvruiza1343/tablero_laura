@@ -85,3 +85,4 @@ canvas_result = st_canvas(
 )
 
 st.markdown('</div>', unsafe_allow_html=True)
+
